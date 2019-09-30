@@ -1,0 +1,18 @@
+    public int longestCommonSubsequence(String text1, String text2) {
+        // create a dp table
+        int [][] dp = new int[text1.length()+1][text2.length()+1];
+        //loop the dp table
+        for(int i=0;i<=text1.length();i++){
+            for(int col = 0; col<=text2.length();col++){
+                if(i==0||col==0){
+                    dp[i][col] = 0;
+                } else if(text2.charAt(col-1)==text1.charAt(i-1)){
+                    dp[i][col] = dp[i-1][col-1]+1;
+                } else{
+                    dp[i][col] = Math.max(dp[i-1][col],dp[i][col-1]);
+                }
+            }
+        }
+        return dp[text1.length()][text2.length()];
+    }
+}
