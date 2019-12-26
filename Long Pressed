@@ -1,0 +1,18 @@
+    public boolean isLongPressedName(String name, String typed) {
+        int firstPointer = 0;
+        int secondPointer = 0;
+        while(firstPointer<name.length()){
+            if(secondPointer<typed.length()&&name.charAt(firstPointer)==typed.charAt(secondPointer)){
+                while(secondPointer+1<typed.length()&&typed.charAt(secondPointer+1)==name.charAt(firstPointer)){
+                    secondPointer++;
+                    if(firstPointer+1<name.length()&&name.charAt(firstPointer)==name.charAt(firstPointer+1))
+                        firstPointer++;
+                }
+                firstPointer++;
+                secondPointer++;
+            }else
+                return false;
+        }
+        return true;
+    }
+}
